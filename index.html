@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Letter Guess</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+</head>
+<body>
+        <!--Header/ never chagnes-->
+        <div class="container">
+            <div class="jumbotron">
+                <h1 class="display-4">Guess the letter!</h1>
+                <p class="lead">Guess the letter of the alphabet</p>
+ 
+            </div>
+
+
+        <!--letters already guessed-->
+            <div class="card card-default">
+                    <div class="card-body">
+                        Letters Guessed: <span id="wrongletter">l j k</span>
+                    </div>
+                </div>
+
+        <!--number of attempts counter-->       
+            <div class="card card-default">
+                    <div class="card-body">
+                        Trys left: <span id="attemptsleft">1</span>
+                    </div>
+                </div>
+        
+        <!--Win counter-->
+            <div class="card card-default">
+                    <div class="card-body">
+                        Wins!: <span id="wins">0</span>
+                    </div>
+                </div>
+
+        <!--Los Counter-->
+            <div class="card card-default">
+                    <div class="card-body">
+                        Loses!: <span id="loses">0</span>
+                    </div>
+                </div>    
+        </div>
+        
+    <!--JS link/ runs after html-->
+    <script src="assets/javascript/game.js"></script>
+
+</body>
+</html>
