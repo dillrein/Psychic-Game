@@ -5,39 +5,67 @@ var letterChosen = "";
 var gameboard = [];
 var wrongletters = [];
 
-var wins = 0;
-var losses = 0;
-var attemptsleft = 0;
+var winsNum = 0;
+var lossesNum = 0;
+var attemptsLeft = 9;
 
 //Functions
 //----------------------------------------------
 function start () {
     //rng to pick a letter based off number of letter array
     letterChosen = letters[Math.floor(Math.random() * letters.length)];
+    
+    //game board reset
+    attemptsLeft = 9;
+    wrongletters =[];
 
-    //user input
-    document.onkeypress=function(event){
-        var userInput = event.key.toLowerCase();
+    //insert game score.. wins loses and letters guessed.
+    document.getElementById("wrongGuess").innerHTML = wrongletters;
 
-        console.log(userInput);
+    document.getElementById("wins").innerHTML = winsNum;
+    document.getElementById("loses").innerHTML = lossesNum;
+    document.getElementById("attempts").innerHTML = attemptsLeft;
 
+    
+    console.log(letterChosen);   
+}
+
+function compareLetters(letter){
+    if( letter === letterChosen){
+        wins++;
+        alert("Correct Guess!");
+
+        document.getElementById("wins").innerHTML = winsNum;
+
+        start();
+
+    }else if (letter !== letterChosen){
+        attemptsLeft--;
+                
+        document.getElementById("attempts").innerHTML = attemptsLeft ;
 
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    console.log(letterChosen);
-   
+
+    console.log(wrongletters)
+
 }
+
+    
+
 
 
 //Main Process
 //----------------------------------------------
 start();
+
+
+//user inputs key
+document.onkeyup=function(event){
+    var userInput = String.fromCharCode(event.keyCode).toLowerCase();
+    compareLetter(userInput);
+    
+    
+    
+    console.log(userInput);
+
+}
