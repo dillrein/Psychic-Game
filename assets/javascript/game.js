@@ -1,7 +1,6 @@
 // Variables
 //--------------------------------------------
 var letters =["a", "b", "c", "d", "e", "f","g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
-var letterChosen = "";
 var gameboard = [];
 var wrongletters = [];
 
@@ -30,42 +29,45 @@ function start () {
     console.log(letterChosen);   
 }
 
-function compareLetters(letter){
-    if( letter === letterChosen){
-        wins++;
-        alert("Correct Guess!");
-
-        document.getElementById("wins").innerHTML = winsNum;
-
-        start();
-
-    }else if (letter !== letterChosen){
-        attemptsLeft--;
-                
-        document.getElementById("attempts").innerHTML = attemptsLeft ;
-
-    }
-
-    console.log(wrongletters)
-
-}
-
-    
-
-
-
 //Main Process
 //----------------------------------------------
 start();
 
-
-//user inputs key
 document.onkeyup=function(event){
     var userInput = String.fromCharCode(event.keyCode).toLowerCase();
-    compareLetter(userInput);
-    
-    
-    
     console.log(userInput);
+    function compareLetters(userInput){
 
-}
+        //if userguess is random letter
+        if( userInput == letterChosen){
+            wins++;
+            alert("Correct Guess!");
+
+            document.getElementById("wins").innerHTML = winsNum;
+
+            console.log(winsNum +" wins")
+        }
+        else if (userInput !== letterChosen){
+            attemptsLeft--;
+            wrongletters = userInput;  
+
+            document.getElementById("attempts").innerHTML = attemptsLeft ;
+
+            console.log(wrongletters +" wrong letters")
+        }
+        else if (attemptsLeft = 0){
+            lossesNum++;
+            alert("You lost!")
+
+            document.getElementById("loses").innerHTML = lossesNum;
+
+            console.log(lossesNum +" loses")
+        }
+        
+
+        
+        
+
+    
+    
+}}
