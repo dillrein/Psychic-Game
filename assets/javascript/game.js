@@ -77,6 +77,7 @@ document.onkeyup=function(event){
     var userInput = event.key.toLowerCase();
     if (attemptsLeft === 0){
         console.log("gameover")
+        alert("Game Over, refresh page")
         lossesNum++;
 
         document.getElementById("loses").innerHTML = lossesNum;
