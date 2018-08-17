@@ -25,49 +25,61 @@ function start () {
     document.getElementById("loses").innerHTML = lossesNum;
     document.getElementById("attempts").innerHTML = attemptsLeft;
 
-    
-    console.log(letterChosen);   
+    //checking if code works
+    console.log(letterChosen);
+    console.log(winsNum);
+    console.log(lossesNum);
+    console.log(attemptsLeft);   
 }
 
 //Main Process
 //----------------------------------------------
 start();
 
+//user input
 document.onkeyup=function(event){
     var userInput = String.fromCharCode(event.keyCode).toLowerCase();
     console.log(userInput);
+    
+    
     function compareLetters(userInput){
 
         //if userguess is random letter
-        if( userInput == letterChosen){
+        if (userInput = letterChosen){
             wins++;
             alert("Correct Guess!");
 
+            //update win score
             document.getElementById("wins").innerHTML = winsNum;
+
+            start();
 
             console.log(winsNum +" wins")
         }
+        //if userguess is wrong
         else if (userInput !== letterChosen){
             attemptsLeft--;
             wrongletters = userInput;  
-
+            
+            //display wrong letter
             document.getElementById("attempts").innerHTML = attemptsLeft ;
 
+            start();
+
+            
             console.log(wrongletters +" wrong letters")
         }
+        //if user runs out of attempts
         else if (attemptsLeft = 0){
             lossesNum++;
             alert("You lost!")
 
+            //up lose score
             document.getElementById("loses").innerHTML = lossesNum;
+
+            start();
 
             console.log(lossesNum +" loses")
         }
-        
-
-        
-        
-
-    
-    
+ 
 }}
