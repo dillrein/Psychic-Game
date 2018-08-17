@@ -9,15 +9,16 @@ var winsNum = [];
 var lossesNum = [];
 var attemptsLeft = 9;
 
+
+
 //Functions
-//----------------------------------------------
+//--------------------------------------------------
 function start () {
     //rng to pick a letter based off number of letter array
     letterChosen = letters[Math.floor(Math.random() * letters.length)];
     
     //game board reset
-    attemptsLeft = 9;
-    wrongletters =[];
+    
 
     //insert game score.. wins loses and letters guessed.
     document.getElementById("wrongGuess").innerHTML = wrongletters;
@@ -27,14 +28,17 @@ function start () {
     document.getElementById("attempts").innerHTML = attemptsLeft;
 
     //checking if code works
-    console.log(letterChosen);
-    console.log(winsNum);
-    console.log(lossesNum);
-    console.log(attemptsLeft);   
+    // console.log(letterChosen);
+    // console.log(winsNum);
+    // console.log(lossesNum);
+    // console.log(attemptsLeft);   
 }
 function compareLetters(userInput){
-
-    //if userguess is random letter
+    // console.log("inside compare letters")
+    // console.log(userInput);
+    
+    // console.log(letterChosen);
+       
     if (userInput == letterChosen){
         winsNum++;
         alert("Correct Guess!");
@@ -43,34 +47,27 @@ function compareLetters(userInput){
         document.getElementById("wins").innerHTML = winsNum;
 
         
-        console.log(winsNum +" wins")
+        // console.log(winsNum +" wins")
         start();
     }
     //if userguess is wrong
     else if (userInput !== letterChosen){
-        (--attemptsLeft);
-        wrongletters = event.key.toLowerCase;  
+        attemptsLeft--;
+        console.log(attemptsLeft)
+       
+        wrongletters = userInput;  
+        console.log(wrongletters +" wrong letters")
         
         //display wrong letter
-        document.getElementById("attempts").innerHTML = attemptsLeft ;
+        document.getElementById("attempts").innerHTML = attemptsLeft;
 
                 
-        console.log(wrongletters +" wrong letters")
+       
         start();
     }
-    //if user runs out of attempts
-    else if (attemptsLeft === 0){
-        lossesNum++;
-        alert("You lost!")
 
-        //up lose score
-        document.getElementById("loses").innerHTML = lossesNum;
-
-        
-
-        console.log(lossesNum +" loses")
-    }
 }
+
 //Main Process
 //----------------------------------------------
 start();
@@ -78,9 +75,15 @@ start();
 //user input
 document.onkeyup=function(event){
     var userInput = event.key.toLowerCase();
-    console.log(userInput);
-    
-    compareLetters();
+    if (attemptsLeft === 0){
+        console.log("gameover")
+        lossesNum++;
+
+        document.getElementById("loses").innerHTML = lossesNum;
+        return false;
+    }
+
+    compareLetters(userInput);
 }
     
   
